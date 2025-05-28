@@ -70,10 +70,6 @@ class MockLLMWithTools:
         elif "고맙습니다" in user_input.lower() or "감사합니다" in user_input.lower() or "안녕히 계세요" in user_input.lower():
             response_content = "LLM: 천만에요. 도움이 되어 기쁩니다. 대화를 마무리하겠습니다."
 
-        print("#########################")
-        print("raw_tool_calls", raw_tool_calls)
-        print("#########################")
-
         if raw_tool_calls:
             # raw_tool_calls는 리스트이므로 첫 번째 요소에 접근
             first_tool_call = raw_tool_calls[0]
@@ -83,10 +79,6 @@ class MockLLMWithTools:
                 "args": first_tool_call["args"],
                 "id": first_tool_call["id"]
             }
-            
-            print("#########################")
-            print("tool_call_dict", tool_call_dict)
-            print("#########################")
 
             # 딕셔너리를 리스트에 담아서 AIMessage 생성
             return AIMessage(content=response_content, tool_calls=[tool_call_dict])
