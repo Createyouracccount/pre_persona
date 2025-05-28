@@ -30,22 +30,24 @@ async def summary_module_function(state: "AgentState"):
 
     print(f"Summary_Module이 Gemini로 대화 요약 중입니다.")
 
-    # Gemini LLM 준비
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash-lite",
-        temperature=0.3,
-        google_api_key=GEMINI_API_KEY,
-        max_retries=2
-    )
+    # # Gemini LLM 준비
+    # llm = ChatGoogleGenerativeAI(
+    #     model="gemini-2.0-flash-lite",
+    #     temperature=0.3,
+    #     google_api_key=GEMINI_API_KEY,
+    #     max_retries=2
+    # )
 
-    # 요약 프롬프트 추가
-    summary_prompt = SystemMessage(content="아래의 대화 전체를 한국어로 간결하게 요약해줘. 중요한 정보와 맥락을 빠짐없이 포함해줘.\n")
-    llm_input = [summary_prompt] + messages
+    # # 요약 프롬프트 추가
+    # summary_prompt = SystemMessage(content="아래의 대화 전체를 한국어로 간결하게 요약해줘. 중요한 정보와 맥락을 빠짐없이 포함해줘.\n")
+    # llm_input = [summary_prompt] + messages
 
-    # Gemini LLM 호출
-    summary_response = await llm.ainvoke(llm_input)
-    summary_text = summary_response.content
-    print(f"요약: {summary_text}")
+    # # Gemini LLM 호출
+    # summary_response = await llm.ainvoke(llm_input)
+    # summary_text = summary_response.content
+    # print(f"요약: {summary_text}")
+
+    summary_text = "요약 테스트"
 
     updated_messages = messages + [SystemMessage(content=f"요약 생성됨: {summary_text}")]
     return {"summary": summary_text, "messages": updated_messages} 
