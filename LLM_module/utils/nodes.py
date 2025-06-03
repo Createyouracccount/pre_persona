@@ -41,7 +41,7 @@ async def main_agent_function(state: AgentState):
 
     current_messages = list(state.get("messages", []))
 
-    with open("prompts/main_agent_prompt.txt", "r") as file:
+    with open("prompts/main_agent_prompt.txt", "r", encoding='utf-8') as file:
         main_agent_prompt = file.read()
 
     prompt = ChatPromptTemplate.from_messages([
@@ -79,7 +79,7 @@ async def greeting_agent_function(state: AgentState):
         max_retries=2
     )
 
-    with open("prompts/greeting_agent_prompt.txt", "r") as file:
+    with open("prompts/greeting_agent_prompt.txt", "r", encoding='utf-8') as file:
         greeting_agent_prompt = file.read()
 
     prompt = ChatPromptTemplate.from_messages([
@@ -125,7 +125,7 @@ async def filler_agent_function(state: AgentState):
         max_retries=2
     )
 
-    with open("prompts/filler_agent_prompt.txt", "r") as file:
+    with open("prompts/filler_agent_prompt.txt", "r", encoding='utf-8') as file:
         filler_agent_prompt = file.read()
 
     prompt = ChatPromptTemplate.from_messages([
